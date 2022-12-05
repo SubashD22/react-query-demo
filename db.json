@@ -1,0 +1,26 @@
+{
+    "superHeroes":[
+        {"id":1,
+         "name":"Batman",
+         "alterEgo":"Bruce Wayne"
+        },
+        {"id":2,
+         "name":"Superman",
+         "alterEgo":"Kal-El"
+        },
+        {"id":3,
+         "name":"Wonder Woman",
+         "alterEgo":"Princess Diana"
+        }
+    ],
+    "users":[
+        {
+            "id": "subash@examble.com",
+            "channelId": "codevolution"
+        }
+    ],
+    "courses":[{
+        "id":"codevolution",
+        "courses":["React","vue","angular"]
+    }]
+}

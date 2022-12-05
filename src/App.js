@@ -1,24 +1,33 @@
-import logo from './logo.svg';
 import './App.css';
-
+import {QueryClientProvider, QueryClient}from 'react-query'
+import {ReactQueryDevtools} from 'react-query/devtools'
+import{BrowserRouter as Router,Routes,Route} from 'react-router-dom'
+import Home from './Pages/Home';
+import TSuperHeroes from './Pages/TSuperHeroes';
+import RQSuperHeroes from './Pages/RQSuperHeroes';
+import NavBar from './component/NavBar';
+import RQSingleHero from './Pages/RQSingleHero';
+import DynamicHeroes from './Pages/DynamicHeroes';
+import Dependent from './Pages/Dependent';
+const queryClient = new QueryClient()
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <QueryClientProvider client={queryClient}>
+    <Router>
+      <NavBar/>
+      <Routes>
+        <Route path='/' element={<Home/>}/>
+        <Route path='/tsh' element={<TSuperHeroes/>}/>
+        <Route path='/rsh' element={<RQSuperHeroes/>}/>
+        <Route path='/rsh/:Id' element={<RQSingleHero/>}/>
+        <Route path='/Dh' element={<DynamicHeroes id={[1,3]}/>}/>
+        <Route path='/Dep' element={<Dependent email='subash@examble.com'/>}/>
+      </Routes>
+    </Router>
+    <ReactQueryDevtools initialIsOpen={false} position='bottom-right'/>
+    </QueryClientProvider>
+    </>
   );
 }
 
